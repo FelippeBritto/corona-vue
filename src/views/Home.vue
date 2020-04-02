@@ -1,19 +1,23 @@
 <template>
-  <div class="Home">
-    <div class="logForm">
-      <h1>
-        <b>Administrador</b>
-      </h1>
-    </div>
+  <div class="home">
+    <button @click="sair">Sair</button>
   </div>
 </template>
+
 <script>
+// @ is an alias to /src
+import firebase from "firebase";
 export default {
   name: "home",
-  data() {},
-  methods: {}
+  methods: {
+    sair: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("login");
+        });
+    }
+  }
 };
 </script>
-
-<style scoped>
-</style>
